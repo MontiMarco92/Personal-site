@@ -10,7 +10,7 @@ const Navbar = () => {
 		setNav(!nav);
 	};
 	return (
-		<div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#ffffff] text-[#0a192f] text-lg">
+		<div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-white text-lg">
 			<div>logo</div>
 
 			<ul className="hidden md:flex leading-10">
@@ -34,7 +34,7 @@ const Navbar = () => {
 						Projects
 					</Link>
 				</li>
-				<li className="bg-pink-600 hover:text-white duration-150">
+				<li className="bg-pink-600 hover:text-pink-600 hover:bg-white duration-150">
 					<Link to="contact" smooth={true} duration={500}>
 						Contact
 					</Link>
@@ -49,25 +49,25 @@ const Navbar = () => {
 				className={
 					!nav
 						? "hidden"
-						: "absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center"
+						: "absolute top-0 left-0 w-full h-screen text-3xl bg-[#0a192f] flex flex-col justify-center items-center"
 				}
 			>
-				<li className="py-6 text-4xl">
+				<li className="py-6 border-b border-pink-600">
 					<Link onClick={handleClick} to="home" smooth={true} duration={500}>
 						Home
 					</Link>
 				</li>
-				<li className="py-6 text-4xl">
+				<li className="py-6 border-b border-pink-600">
 					<Link onClick={handleClick} to="about" smooth={true} duration={500}>
 						About
 					</Link>
 				</li>
-				<li className="py-6 text-4xl">
+				<li className="py-6 border-b border-pink-600">
 					<Link onClick={handleClick} to="skills" smooth={true} duration={500}>
 						Skills
 					</Link>
 				</li>
-				<li className="py-6 text-4xl">
+				<li className="py-6 border-b border-pink-600">
 					<Link
 						onClick={handleClick}
 						to="projects"
@@ -77,7 +77,7 @@ const Navbar = () => {
 						Projects
 					</Link>
 				</li>
-				<li className="py-6 text-4xl">
+				<li className="py-6">
 					<Link onClick={handleClick} to="contact" smooth={true} duration={500}>
 						Contact
 					</Link>
