@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
 	const form = useRef();
@@ -8,10 +9,10 @@ const Contact = () => {
 		email: "",
 		msg: "",
 	});
-	const [error, setError] = useState();
+	const [error, setError] = useState({ disableInput: true });
 
 	const validate = (input) => {
-		let errors = {};
+		let errors = { disableInput: true };
 
 		if (!input.name) {
 			errors.name = "Name is required";
@@ -25,6 +26,9 @@ const Contact = () => {
 		}
 		if (!input.msg) {
 			errors.msg = "Message is required";
+		}
+		if (Object.keys(errors).length == 1) {
+			errors.disableInput = false;
 		}
 		return errors;
 	};
@@ -45,21 +49,32 @@ const Contact = () => {
 
 	const sendEmail = (e) => {
 		e.preventDefault();
-
+		console.log("entra al submit");
+		console.log(form);
 		emailjs
 			.sendForm(
-				"service_9bt9sgf",
-				"template_9wl809n",
+				process.env.REACT_APP_SERVICE_ID,
+				process.env.REACT_APP_TEMPLATE_ID,
 				form.current,
-				"TAOT7DKjRzOjIKCk8"
+				process.env.REACT_APP_PUBLIC_KEY
 			)
 			.then((result) => {
 				console.log(result.text);
+				toast.success("The email was sent. I'll be in touch!");
 			})
 			.catch((error) => {
 				console.log(error);
+				toast.error("Something went't wrong. Try again!");
 			});
+
+		setInputs({
+			name: "",
+			email: "",
+			msg: "",
+		});
+		setError({ disableInput: true });
 	};
+
 	return (
 		<div
 			name="contact"
@@ -79,7 +94,11 @@ const Contact = () => {
 					</p>
 				</div>
 				<input
-					className="my-2 p-2 bg-[#F7F7F7]"
+					className={
+						error.name
+							? "my-2 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-pink-600"
+							: "my-2 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-sky-500 "
+					}
 					type="text"
 					placeholder="Name"
 					name="name"
@@ -87,9 +106,15 @@ const Contact = () => {
 					onChange={onChangeHandler}
 					required
 				/>
-				{error && <span className="text-pink-600">{error.name}</span>}
+				{error && (
+					<span className="text-pink-600 font-medium">{error.name}</span>
+				)}
 				<input
-					className="my-4 p-2 bg-[#F7F7F7]"
+					className={
+						error.email
+							? "my-2 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-pink-600"
+							: "my-2 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-sky-500 "
+					}
 					type="email"
 					placeholder="Email"
 					name="email"
@@ -97,24 +122,45 @@ const Contact = () => {
 					onChange={onChangeHandler}
 					required
 				/>
-				{error && <span className="text-pink-600">{error.email}</span>}
+				{error && (
+					<span className="text-pink-600 font-medium">{error.email}</span>
+				)}
 				<textarea
-					className="bg-[#F7F7F7] p-2 my-2"
+					className={
+						error.msg
+							? "my-4 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-pink-600"
+							: "my-4 p-2 bg-[#F7F7F7] focus:outline-none focus:ring focus:ring-sky-500 "
+					}
 					rows="10"
 					placeholder="Say Hi!"
-					name="message"
+					name="msg"
 					value={inputs.msg}
 					onChange={onChangeHandler}
 					required
 				></textarea>
-				{error && <span className="text-pink-600">{error.msg}</span>}
+				{error && (
+					<span className="text-pink-600 font-medium">{error.msg}</span>
+				)}
 				<input
 					type="submit"
 					value="Get in touch"
-					disabled={error ? true : false}
-					className="text-white border-2 hover:bg-pink-600 hover:border-pink-600 px-4 py-3 mx-auto flex items-center my-3 duration-300"
+					disabled={error.disableInput}
+					className="text-white border-2 cursor-pointer hover:bg-pink-600 hover:border-pink-600 disabled:bg-gray-400 disabled:text-white disabled:border-gray-400 disabled:cursor-not-allowed px-4 py-3 mx-auto flex items-center my-3 duration-300"
 				/>
 			</form>
+
+			<Toaster
+				position="bottom-center"
+				reverseOrder={false}
+				toastOptions={{
+					style: {
+						border: "2px solid rgb(219 39 119)",
+						padding: "0.5rem 1rem",
+						background: "#F7F7F7",
+						color: "#0a192f",
+					},
+				}}
+			/>
 		</div>
 	);
 };
