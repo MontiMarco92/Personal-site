@@ -14,8 +14,8 @@ const Projects = () => {
 					<p className="text-4xl font-bold inline border-b-4 border-pink-600">
 						Projects
 					</p>
-					<p className="py-6 font-medium sm:text-lg">
-						Check out some of my recent work
+					<p className="py-4 font-medium sm:text-lg">
+						// Check out some of my recent work
 					</p>
 				</div>
 
@@ -29,12 +29,15 @@ const Projects = () => {
 								ATR Computacion
 							</span>
 							<div className="text-center">
-								<a href="/">
+								{/* <a href="/">
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Demo
 									</button>
-								</a>
-								<a href="/">
+								</a> */}
+								<a
+									href="https://github.com/MontiMarco92/client-pf-e-commerce"
+									target="_blank"
+								>
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Code
 									</button>
@@ -50,12 +53,15 @@ const Projects = () => {
 								Doggopedia
 							</span>
 							<div className="text-center">
-								<a href="/">
+								<a href="https://pi-doggopedia-fe.vercel.app/" target="_blank">
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Demo
 									</button>
 								</a>
-								<a href="/">
+								<a
+									href="https://github.com/MontiMarco92/PI-Doggopedia"
+									target="_blank"
+								>
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Code
 									</button>
@@ -71,12 +77,18 @@ const Projects = () => {
 								WavePortal
 							</span>
 							<div className="text-center">
-								<a href="/">
+								<a
+									href="https://waveportal-web3-chi.vercel.app/"
+									target="_blank"
+								>
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Demo
 									</button>
 								</a>
-								<a href="/">
+								<a
+									href="https://github.com/MontiMarco92/wavePortalContract-web3"
+									target="_blank"
+								>
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Code
 									</button>
