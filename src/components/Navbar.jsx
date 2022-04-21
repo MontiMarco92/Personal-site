@@ -18,7 +18,7 @@ const Navbar = () => {
 				<img src={Logo} alt="Logo Image" className="w-[60px]" />
 				<Typed
 					className="ml-5 font-logo"
-					strings={["Marco.Monti"]}
+					strings={["Marco.Monti_"]}
 					typeSpeed={60}
 					backSpeed={80}
 					loop
