@@ -14,15 +14,22 @@ const Navbar = () => {
 	};
 	return (
 		<div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-white text-lg">
-			<div className="flex items-center">
-				<img src={Logo} alt="Logo Image" className="w-[60px]" />
-				<Typed
-					className="ml-5 font-logo"
-					strings={["Marco.Monti_"]}
-					typeSpeed={60}
-					backSpeed={80}
-					loop
-				/>
+			<div>
+				<Link
+					to="home"
+					smooth={true}
+					duration={500}
+					className="flex items-center hover-hover:hover:cursor-pointer"
+				>
+					<img src={Logo} alt="Logo" className="w-[60px]" />
+					<Typed
+						className="ml-5 font-logo"
+						strings={["Marco.Monti_"]}
+						typeSpeed={60}
+						backSpeed={80}
+						loop
+					/>
+				</Link>
 			</div>
 
 			<ul className="hidden md:flex leading-10">
@@ -113,6 +120,7 @@ const Navbar = () => {
 							className=" h-full flex flex-col justify-center  text-gray-300"
 							href="https://www.linkedin.com/in/marco-montip/"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<FaLinkedin size={30} />
 						</a>
@@ -122,6 +130,7 @@ const Navbar = () => {
 							className=" h-full flex flex-col justify-center text-gray-300"
 							href="https://github.com/MontiMarco92"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<FaGithub size={30} />
 						</a>
@@ -157,6 +166,7 @@ const Navbar = () => {
 							className="flex justify-between items-center w-full text-gray-300"
 							href="https://www.linkedin.com/in/marco-montip/"
 							target="_blank"
+							rel="noreferrer"
 						>
 							LinkedIn <FaLinkedin size={30} />
 						</a>
@@ -166,6 +176,7 @@ const Navbar = () => {
 							className="flex justify-between items-center w-full text-gray-300"
 							href="https://github.com/MontiMarco92"
 							target="_blank"
+							rel="noreferrer"
 						>
 							GitHub <FaGithub size={30} />
 						</a>
@@ -201,6 +212,7 @@ const Navbar = () => {
 							className=" h-full flex flex-col  text-gray-300"
 							href="https://www.linkedin.com/in/marco-montip/"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<FaLinkedin size={30} />
 							<span className=" rotate-90 pl-3 ">LinkedIn</span>
@@ -211,6 +223,7 @@ const Navbar = () => {
 							className=" h-full flex flex-col text-gray-300"
 							href="https://github.com/MontiMarco92"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<FaGithub size={30} />
 							<span className=" rotate-90 pl-4 ">GitHub</span>
@@ -245,7 +258,7 @@ const Navbar = () => {
 				<button>
 					{" "}
 					<BsArrowUpCircle
-						className="text-gray-300 sm:text-4xl text-2xl hover-hover:hover:text-pink-600 hover-hover:hover:animate-bounce duration-200"
+						className="text-gray-300 sm:text-4xl text-3xl hover-hover:hover:text-pink-600 hover-hover:hover:animate-bounce duration-200"
 						onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })}
 					/>
 				</button>
