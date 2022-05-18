@@ -22,6 +22,30 @@ const Projects = () => {
 				{/* Container */}
 				<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
 					{/* Grid item */}
+					<div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto bg-Netflix bg-cover bg-center bg-no-repeat h-[250px] hover:bg-NetflixGradient">
+						{/* Hover effects */}
+						<div className="opacity-0 group-hover:opacity-100 flex flex-col items-center">
+							<span className="text-2xl font-bold text-white tracking-wider">
+								Netflix Clone
+							</span>
+							<div className="text-center">
+								<a href="https://netflix-clone-mm.vercel.app/">
+									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+										Demo
+									</button>
+								</a>
+								<a
+									href="https://github.com/MontiMarco92/Netflix-Clone"
+									target="_blank"
+								>
+									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
+										Code
+									</button>
+								</a>
+							</div>
+						</div>
+					</div>
+
 					<div className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto bg-ATR bg-cover bg-center bg-no-repeat h-[250px] hover:bg-ATRgradient">
 						{/* Hover effects */}
 						<div className="opacity-0 group-hover:opacity-100 flex flex-col items-center">
