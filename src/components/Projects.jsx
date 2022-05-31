@@ -29,7 +29,7 @@ const Projects = () => {
 								Netflix Clone
 							</span>
 							<div className="text-center">
-								<a href="https://netflix-clone-mm.vercel.app/">
+								<a href="https://netflix-clone-mm.vercel.app/" target="_blank">
 									<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
 										Demo
 									</button>
