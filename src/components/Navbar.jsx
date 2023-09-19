@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState, useCallback } from "react";
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { BsFileEarmarkPerson, BsArrowUpCircle } from "react-icons/bs";
 import { Link, animateScroll as scroll } from "react-scroll";
+import data from "../assets/data.json";
 import CV from "../assets/CV.pdf";
-import Logo from "../assets/Logol.png";
+import Logo from "../assets/images/Logol.png";
 import Typed from "react-typed";
 
 const Navbar = () => {
@@ -12,6 +13,17 @@ const Navbar = () => {
 	const handleClick = () => {
 		setNav(!nav);
 	};
+
+	const Icon = useCallback(({ iconId }) => {
+		const obj = {
+			linkedin: FaLinkedin,
+			github: FaGithub,
+			contact: FiMail,
+			cv: BsFileEarmarkPerson,
+		};
+		return obj[iconId]({ size: 30 });
+	}, []);
+
 	return (
 		<div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-white text-lg">
 			<div>
@@ -33,31 +45,19 @@ const Navbar = () => {
 			</div>
 
 			<ul className="hidden md:flex leading-10">
-				<li className="border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100">
-					<Link to="home" smooth={true} duration={500}>
-						Home
-					</Link>
-				</li>
-				<li className="border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100">
-					<Link to="about" smooth={true} duration={500}>
-						About
-					</Link>
-				</li>
-				<li className="border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100">
-					<Link to="skills" smooth={true} duration={500}>
-						Skills
-					</Link>
-				</li>
-				<li className="border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100">
-					<Link to="projects" smooth={true} duration={500}>
-						Projects
-					</Link>
-				</li>
-				<li className="bg-pink-600 hover-hover:hover:text-pink-600 hover-hover:hover:bg-white duration-150">
-					<Link to="contact" smooth={true} duration={500}>
-						Contact
-					</Link>
-				</li>
+				{data.navbar.desktop.map((link, idx) => (
+					<li
+						key={idx}
+						className={
+							link.className ??
+							"border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100"
+						}
+					>
+						<Link to={link.id} smooth={true} duration={500}>
+							{link.title}
+						</Link>
+					</li>
+				))}
 			</ul>
 
 			{/* Hamburger Menu */}
@@ -72,88 +72,53 @@ const Navbar = () => {
 				}
 			>
 				<ul>
-					<li className="py-6 border-b border-pink-600">
-						<Link onClick={handleClick} to="home" smooth={true} duration={500}>
-							Home
-						</Link>
-					</li>
-					<li className="py-6 border-b border-pink-600">
-						<Link onClick={handleClick} to="about" smooth={true} duration={500}>
-							About
-						</Link>
-					</li>
-					<li className="py-6 border-b border-pink-600">
-						<Link
-							onClick={handleClick}
-							to="skills"
-							smooth={true}
-							duration={500}
+					{data.navbar.mobile.map((link, idx) => (
+						<li
+							className={link.className ?? "py-6 border-b border-pink-600"}
+							key={idx}
 						>
-							Skills
-						</Link>
-					</li>
-					<li className="py-6 border-b border-pink-600">
-						<Link
-							onClick={handleClick}
-							to="projects"
-							smooth={true}
-							duration={500}
-						>
-							Projects
-						</Link>
-					</li>
-					<li className="py-6">
-						<Link
-							onClick={handleClick}
-							to="contact"
-							smooth={true}
-							duration={500}
-						>
-							Contact
-						</Link>
-					</li>
+							<Link
+								onClick={handleClick}
+								to={link.id}
+								smooth={true}
+								duration={500}
+							>
+								{link.title}
+							</Link>
+						</li>
+					))}
 				</ul>
+
 				{/* Social icons in hamburger menu */}
 				<ul className="flex absolute bottom-5 ">
-					<li className="w-[60px] h-[60px] flex justify-center bg-blue-700 ">
-						<a
-							className=" h-full flex flex-col justify-center  text-gray-300"
-							href="https://www.linkedin.com/in/marco-montip/"
-							target="_blank"
-							rel="noreferrer"
+					{data.navbar.socialIcons.map((icon, idx) => (
+						<li
+							className={`w-[60px] h-[60px] flex justify-center ${icon.bgColor}`}
+							key={idx}
 						>
-							<FaLinkedin size={30} />
-						</a>
-					</li>
-					<li className="w-[60px] h-[60px] flex justify-center bg-[#333333]">
-						<a
-							className=" h-full flex flex-col justify-center text-gray-300"
-							href="https://github.com/MontiMarco92"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<FaGithub size={30} />
-						</a>
-					</li>
-					<li className="w-[60px] h-[60px] flex justify-center bg-[#F24A72]">
-						<Link
-							className=" h-full flex flex-col justify-center text-gray-300"
-							to="contact"
-							smooth={true}
-							duration={500}
-						>
-							<FiMail size={30} />
-						</Link>
-					</li>
-					<li className="w-[60px] h-[60px] flex justify-center bg-[#4D4C7D]">
-						<a
-							className=" h-full flex flex-col justify-center text-gray-300"
-							href={CV}
-							download="MarcoMonti's_CV"
-						>
-							<BsFileEarmarkPerson size={30} />
-						</a>
-					</li>
+							{!icon.isSectionLink ? (
+								<a
+									className=" h-full flex flex-col justify-center  text-gray-300"
+									href={icon.id === "cv" ? CV : icon.href}
+									target="_blank"
+									rel="noreferrer"
+									download={icon.id === "cv" ? "MarcoMonti's_CV" : undefined}
+								>
+									<Icon iconId={icon.id} />
+								</a>
+							) : (
+								<Link
+									className=" h-full flex flex-col justify-center text-gray-300"
+									to={icon.id}
+									onClick={handleClick}
+									smooth={true}
+									duration={500}
+								>
+									<Icon iconId={icon.id} />
+								</Link>
+							)}
+						</li>
+					))}
 				</ul>
 			</div>
 
@@ -161,45 +126,32 @@ const Navbar = () => {
 			{/* lateral popup */}
 			<div className="hidden xl:flex fixed flex-col top-[35%] left-0">
 				<ul>
-					<li className="w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-700 ">
-						<a
-							className="flex justify-between items-center w-full text-gray-300"
-							href="https://www.linkedin.com/in/marco-montip/"
-							target="_blank"
-							rel="noreferrer"
+					{data.navbar.socialIcons.map((icon, idx) => (
+						<li
+							className={`w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 ${icon.bgColor}`}
 						>
-							LinkedIn <FaLinkedin size={30} />
-						</a>
-					</li>
-					<li className="w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
-						<a
-							className="flex justify-between items-center w-full text-gray-300"
-							href="https://github.com/MontiMarco92"
-							target="_blank"
-							rel="noreferrer"
-						>
-							GitHub <FaGithub size={30} />
-						</a>
-					</li>
-					<li className="w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 bg-[#F24A72]">
-						<Link
-							className="flex justify-between items-center w-full text-gray-300"
-							to="contact"
-							smooth={true}
-							duration={500}
-						>
-							Email <FiMail size={30} />
-						</Link>
-					</li>
-					<li className="w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 bg-[#4D4C7D]">
-						<a
-							className="flex justify-between items-center w-full text-gray-300"
-							href={CV}
-							download="MarcoMonti's_CV"
-						>
-							Resume <BsFileEarmarkPerson size={30} />
-						</a>
-					</li>
+							{!icon.isSectionLink ? (
+								<a
+									className="flex justify-between items-center w-full text-gray-300"
+									href={icon.id === "cv" ? CV : icon.href}
+									target="_blank"
+									rel="noreferrer"
+									download={icon.id === "cv" ? "MarcoMonti's_CV" : undefined}
+								>
+									{icon.title} <Icon iconId={icon.id} />
+								</a>
+							) : (
+								<Link
+									className="flex justify-between items-center w-full text-gray-300"
+									to={icon.id}
+									smooth={true}
+									duration={500}
+								>
+									{icon.title} <Icon iconId={icon.id} />
+								</Link>
+							)}
+						</li>
+					))}
 				</ul>
 			</div>
 
@@ -207,56 +159,40 @@ const Navbar = () => {
 
 			<div className="hidden md:flex fixed bottom-0 left-[50%] -translate-x-[50%] xl:hidden">
 				<ul className="flex flex-row mb-[-105px]">
-					<li className="w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20  duration-300 bg-blue-700 ">
-						<a
-							className=" h-full flex flex-col  text-gray-300"
-							href="https://www.linkedin.com/in/marco-montip/"
-							target="_blank"
-							rel="noreferrer"
+					{data.navbar.socialIcons.map((icon, idx) => (
+						<li
+							className={`w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20  duration-300 ${icon.bgColor}`}
 						>
-							<FaLinkedin size={30} />
-							<span className=" rotate-90 pl-3 ">LinkedIn</span>
-						</a>
-					</li>
-					<li className="w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20 duration-300 bg-[#333333]">
-						<a
-							className=" h-full flex flex-col text-gray-300"
-							href="https://github.com/MontiMarco92"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<FaGithub size={30} />
-							<span className=" rotate-90 pl-4 ">GitHub</span>
-						</a>
-					</li>
-					<li className="w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20 duration-300 bg-[#F24A72]">
-						<Link
-							className=" h-full flex flex-col text-gray-300"
-							to="contact"
-							smooth={true}
-							duration={500}
-						>
-							<FiMail size={30} />
-							<span className=" rotate-90 pl-3 ">Email</span>
-						</Link>
-					</li>
-					<li className="w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20 duration-300 bg-[#4D4C7D]">
-						<a
-							className=" h-full flex flex-col text-gray-300"
-							href={CV}
-							download="MarcoMonti's_CV"
-						>
-							<BsFileEarmarkPerson size={30} />
-							<span className=" rotate-90 pl-3 ">Resume</span>
-						</a>
-					</li>
+							{!icon.isSectionLink ? (
+								<a
+									className="h-full flex flex-col  text-gray-300"
+									href={icon.id === "cv" ? CV : icon.href}
+									target="_blank"
+									rel="noreferrer"
+									download={icon.id === "cv" ? "MarcoMonti's_CV" : undefined}
+								>
+									<Icon iconId={icon.id} />
+									<span className=" rotate-90 pl-3 ">{icon.title}</span>
+								</a>
+							) : (
+								<Link
+									className="h-full flex flex-col  text-gray-300"
+									to={icon.id}
+									smooth={true}
+									duration={500}
+								>
+									<Icon iconId={icon.id} />
+									<span className=" rotate-90 pl-3 ">{icon.title}</span>
+								</Link>
+							)}
+						</li>
+					))}
 				</ul>
 			</div>
 
 			{/* Scroll up arrow */}
 			<div className={nav ? "hidden" : "flex fixed bottom-[5%] right-[3%]"}>
 				<button>
-					{" "}
 					<BsArrowUpCircle
 						className="text-gray-300 sm:text-4xl text-3xl hover-hover:hover:text-pink-600 hover-hover:hover:animate-bounce duration-200"
 						onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })}

@@ -1,0 +1,117 @@
+{
+	"navbar": {
+		"desktop": [
+			{ "id": "home", "title": "Home", "className": null },
+			{ "id": "about", "title": "About", "className": null },
+			{ "id": "skills", "title": "Skills", "className": null },
+			{ "id": "projects", "title": "Projects", "className": null },
+			{
+				"id": "contact",
+				"title": "Contact",
+				"className": "bg-pink-600 hover-hover:hover:text-pink-600 hover-hover:hover:bg-white duration-150"
+			}
+		],
+		"mobile": [
+			{ "id": "home", "title": "Home", "className": null },
+			{ "id": "about", "title": "About", "className": null },
+			{ "id": "skills", "title": "Skills", "className": null },
+			{ "id": "projects", "title": "Projects", "className": null },
+			{
+				"id": "contact",
+				"title": "Contact",
+				"className": "py-6"
+			}
+		],
+
+		"socialIcons": [
+			{
+				"id": "linkedin",
+				"title": "LinkedIn",
+				"bgColor": "bg-blue-700",
+				"isSectionLink": false,
+				"href": "https://www.linkedin.com/in/marco-montip/"
+			},
+			{
+				"id": "github",
+				"title": "Github",
+				"bgColor": "bg-[#333333]",
+				"isSectionLink": false,
+				"href": "https://github.com/MontiMarco92"
+			},
+			{
+				"id": "contact",
+				"title": "Email",
+				"bgColor": "bg-[#F24A72]",
+				"isSectionLink": true,
+				"href": null
+			},
+			{
+				"id": "cv",
+				"title": "Resume",
+				"bgColor": "bg-[#4D4C7D]",
+				"isSectionLink": false,
+				"href": "./images/CV.pdf"
+			}
+		]
+	},
+	"projects": {
+		"personal": [
+			{
+				"id": 1,
+				"title": "Netflix Clone",
+				"demoLink": null,
+				"codeLink": "https://github.com/MontiMarco92/Netflix-Clone",
+				"className": "bg-Netflix hover:bg-NetflixGradient"
+			},
+			{
+				"id": 2,
+				"title": "ATR Computacion",
+				"demoLink": null,
+				"codeLink": "https://github.com/MontiMarco92/client-pf-e-commerce",
+				"className": "bg-ATR hover:bg-ATRgradient"
+			},
+			{
+				"id": 3,
+				"title": "Doggopedia",
+				"demoLink": null,
+				"codeLink": "https://github.com/MontiMarco92/PI-Doggopedia",
+				"className": "bg-Dog hover:bg-DogGradient"
+			},
+			{
+				"id": 4,
+				"title": "Waveportal",
+				"demoLink": null,
+				"codeLink": "https://github.com/MontiMarco92/wavePortalContract-web3",
+				"className": "bg-WP hover:bg-WPgradient"
+			}
+		],
+		"clients": [
+			{
+				"id": 1,
+				"title": "Pagina|12",
+				"link": "https://www.pagina12.com.ar",
+				"className": "bg-P12 hover:bg-P12gradient"
+			},
+			{
+				"id": 2,
+				"title": "Novozymes",
+				"link": "https://www.novozymes.com/en",
+				"className": "bg-Novo hover:bg-Novogradient"
+			}
+		]
+	},
+	"skills": [
+		{ "id": 1, "title": "HTML", "href": "html" },
+		{ "id": 2, "title": "SASS", "href": "sass" },
+		{ "id": 3, "title": "Node", "href": "node" },
+		{ "id": 4, "title": "React", "href": "react" },
+		{ "id": 5, "title": "Redux", "href": "redux" },
+		{ "id": 6, "title": "Javascript", "href": "javascript" },
+		{ "id": 7, "title": "Postgres", "href": "postgres" },
+		{ "id": 8, "title": "Sequelize", "href": "sequelize" },
+		{ "id": 9, "title": "NextJs", "href": "nextjs" },
+		{ "id": 10, "title": "MongoDB", "href": "mongo" },
+		{ "id": 11, "title": "Git", "href": "git" },
+		{ "id": 12, "title": "Drupal", "href": "drupal" }
+	]
+}

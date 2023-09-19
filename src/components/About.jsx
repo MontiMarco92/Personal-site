@@ -1,8 +1,9 @@
-import React from "react";
-
 const About = () => {
 	return (
-		<div name="about" className="w-full h-screen bg-[#F7F5F2] text-[#0a192f]">
+		<div
+			name="about"
+			className="w-full flex items-center min-h-screen bg-[#F7F5F2] text-[#0a192f]"
+		>
 			<div className="flex flex-col justify-center items-center w-full h-full">
 				<div className="max-w-[1000px] w-full grid grid-cols-2 gap-8">
 					<div className="sm:text-right pb-8 pl-4">

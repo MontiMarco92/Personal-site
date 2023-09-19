@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -78,7 +78,7 @@ const Contact = () => {
 	return (
 		<div
 			name="contact"
-			className="bg-[#0a192f] w-full h-screen flex justify-center items-center p-4"
+			className="bg-[#0a192f] w-full min-h-screen flex justify-center items-center p-4"
 		>
 			<form
 				ref={form}
