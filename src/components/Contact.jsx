@@ -49,8 +49,6 @@ const Contact = () => {
 
 	const sendEmail = (e) => {
 		e.preventDefault();
-		console.log("entra al submit");
-		console.log(form);
 		emailjs
 			.sendForm(
 				process.env.REACT_APP_SERVICE_ID,
