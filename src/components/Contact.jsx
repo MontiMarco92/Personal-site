@@ -27,7 +27,7 @@ const Contact = () => {
 		if (!input.msg) {
 			errors.msg = "Message is required";
 		}
-		if (Object.keys(errors).length == 1) {
+		if (Object.keys(errors).length === 1) {
 			errors.disableInput = false;
 		}
 		return errors;
@@ -88,7 +88,7 @@ const Contact = () => {
 						Contact
 					</p>
 					<p className="text-gray-300 py-4 font-medium sm:text-lg">
-						// Submit the form below and let's have a chat!
+						{"// Submit the form below and let's have a chat!"}
 					</p>
 				</div>
 				<input

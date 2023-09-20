@@ -15,7 +15,7 @@ const Projects = () => {
 
 				<div className="flex flex-col">
 					<p className="py-3 font-medium sm:text-lg">
-						// Check out some of my personal projects
+						{"// Check out some of my personal projects"}
 					</p>
 
 					{/* Container */}
@@ -32,16 +32,24 @@ const Projects = () => {
 									</span>
 									<div className="text-center">
 										{project.demoLink && (
-											<a href={project.demoLink} target="_blank">
+											<a
+												href={project.demoLink}
+												target="_blank"
+												rel="noreferrer"
+											>
 												<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-													Demo
+													{"Demo"}
 												</button>
 											</a>
 										)}
 										{project.codeLink && (
-											<a href={project.codeLink} target="_blank">
+											<a
+												href={project.codeLink}
+												target="_blank"
+												rel="noreferrer"
+											>
 												<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-													Code
+													{"Code"}
 												</button>
 											</a>
 										)}
@@ -54,7 +62,7 @@ const Projects = () => {
 
 				<div className="flex flex-col">
 					<p className="py-3 font-medium sm:text-lg">
-						// These are some of companies' websites I have contributed to
+						{"// These are some of companies' websites I have contributed to"}
 					</p>
 					{/* Container */}
 					<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -69,9 +77,9 @@ const Projects = () => {
 										{project.title}
 									</span>
 									<div className="text-center">
-										<a href={project.link} target="_blank">
+										<a href={project.link} target="_blank" rel="noreferrer">
 											<button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-												Check their website
+												{"Check their website"}
 											</button>
 										</a>
 									</div>
