@@ -51,7 +51,10 @@ const Skills = () => {
 
 				<div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4 text-center py-8">
 					{data.skills.map((skill) => (
-						<div className="shadow-md shadow-white hover:scale-110 duration-500">
+						<div
+							key={skill.id}
+							className="shadow-md shadow-white hover:scale-110 duration-500"
+						>
 							<SkillIconImg iconName={skill.href} />
 							<p className="py-4">{skill.title}</p>
 						</div>

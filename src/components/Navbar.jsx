@@ -25,7 +25,7 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-white text-lg">
+		<div className="fixed z-50 w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-white text-lg">
 			<div>
 				<Link
 					to="home"
@@ -45,9 +45,9 @@ const Navbar = () => {
 			</div>
 
 			<ul className="hidden md:flex leading-10">
-				{data.navbar.desktop.map((link, idx) => (
+				{data.navbar.desktop.map((link) => (
 					<li
-						key={idx}
+						key={link.id}
 						className={
 							link.className ??
 							"border-b-2 border-transparent hover:border-b-2 hover:border-pink-600 duration-100"
@@ -72,10 +72,10 @@ const Navbar = () => {
 				}
 			>
 				<ul>
-					{data.navbar.mobile.map((link, idx) => (
+					{data.navbar.mobile.map((link) => (
 						<li
 							className={link.className ?? "py-6 border-b border-pink-600"}
-							key={idx}
+							key={link.id}
 						>
 							<Link
 								onClick={handleClick}
@@ -91,10 +91,10 @@ const Navbar = () => {
 
 				{/* Social icons in hamburger menu */}
 				<ul className="flex absolute bottom-5 ">
-					{data.navbar.socialIcons.map((icon, idx) => (
+					{data.navbar.socialIcons.map((icon) => (
 						<li
 							className={`w-[60px] h-[60px] flex justify-center ${icon.bgColor}`}
-							key={idx}
+							key={icon.id}
 						>
 							{!icon.isSectionLink ? (
 								<a
@@ -126,8 +126,9 @@ const Navbar = () => {
 			{/* lateral popup */}
 			<div className="hidden xl:flex fixed flex-col top-[35%] left-0">
 				<ul>
-					{data.navbar.socialIcons.map((icon, idx) => (
+					{data.navbar.socialIcons.map((icon) => (
 						<li
+							key={icon.id}
 							className={`w-[160px] h-[60px] flex ml-[-100px] hover:ml-[-10px] duration-300 ${icon.bgColor}`}
 						>
 							{!icon.isSectionLink ? (
@@ -159,8 +160,9 @@ const Navbar = () => {
 
 			<div className="hidden md:flex fixed bottom-0 left-[50%] -translate-x-[50%] xl:hidden">
 				<ul className="flex flex-row mb-[-105px]">
-					{data.navbar.socialIcons.map((icon, idx) => (
+					{data.navbar.socialIcons.map((icon) => (
 						<li
+							key={icon.id}
 							className={`w-[60px] h-[160px] inline-block py-3 hover-hover:hover:-translate-y-20  duration-300 ${icon.bgColor}`}
 						>
 							{!icon.isSectionLink ? (

@@ -44,13 +44,6 @@
 				"bgColor": "bg-[#F24A72]",
 				"isSectionLink": true,
 				"href": null
-			},
-			{
-				"id": "cv",
-				"title": "Resume",
-				"bgColor": "bg-[#4D4C7D]",
-				"isSectionLink": false,
-				"href": "./images/CV.pdf"
 			}
 		]
 	},
@@ -88,15 +81,33 @@
 		"clients": [
 			{
 				"id": 1,
-				"title": "Pagina|12",
-				"link": "https://www.pagina12.com.ar",
-				"className": "bg-P12 hover:bg-P12gradient"
+				"title": "Novonesis",
+				"link": "https://www.novonesis.com",
+				"className": "bg-Novonesis"
 			},
 			{
 				"id": 2,
 				"title": "Novozymes",
 				"link": "https://www.novozymes.com/en",
-				"className": "bg-Novo hover:bg-Novogradient"
+				"className": "bg-Novo"
+			},
+			{
+				"id": 3,
+				"title": "Auditor Service",
+				"link": "https://www.auditorservice.com",
+				"className": "bg-Auditor"
+			},
+			{
+				"id": 4,
+				"title": "Rustique",
+				"link": "https://www.rustique.sk",
+				"className": "bg-Rustique"
+			},
+			{
+				"id": 5,
+				"title": "Pagina|12",
+				"link": "https://www.pagina12.com.ar",
+				"className": "bg-P12"
 			}
 		]
 	},
